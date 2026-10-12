@@ -43,12 +43,18 @@
       const figure = document.createElement("figure");
       figure.className = "gallery-item";
 
+      const button = document.createElement("button");
+      button.className = "gallery-image-button";
+      button.type = "button";
+      button.setAttribute("aria-label", `View enlarged image: ${item.title || item.alt || "Performance photograph"}`);
+
       const image = document.createElement("img");
       image.src = new URL(item.image, projectRoot).href;
       image.alt = item.alt || item.title || "Performance photograph";
       image.loading = "lazy";
       image.decoding = "async";
-      figure.append(image);
+      button.append(image);
+      figure.append(button);
 
       if (item.title) {
         const caption = document.createElement("figcaption");
@@ -57,6 +63,44 @@
         figure.append(caption);
       }
       galleryGrid.append(figure);
+    });
+  }
+
+  function setupLightbox() {
+    const dialog = document.querySelector("#gallery-lightbox");
+    const lightboxImage = dialog.querySelector(".lightbox-image");
+    const lightboxCaption = dialog.querySelector(".lightbox-caption");
+    const closeButton = dialog.querySelector(".lightbox-close");
+    let opener = null;
+
+    galleryGrid.addEventListener("click", event => {
+      const button = event.target.closest(".gallery-image-button");
+      if (!button) return;
+
+      const image = button.querySelector("img");
+      opener = button;
+      lightboxImage.src = image.src;
+      lightboxImage.alt = image.alt;
+      lightboxCaption.textContent = button.nextElementSibling
+        ? button.nextElementSibling.textContent
+        : image.alt;
+      dialog.showModal();
+      closeButton.focus();
+    });
+
+    closeButton.addEventListener("click", () => dialog.close());
+    dialog.addEventListener("click", event => {
+      if (event.target === dialog) dialog.close();
+    });
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && dialog.open) dialog.close();
+    });
+    dialog.addEventListener("close", () => {
+      lightboxImage.removeAttribute("src");
+      lightboxImage.alt = "";
+      lightboxCaption.textContent = "";
+      if (opener?.isConnected) opener.focus();
+      opener = null;
     });
   }
 
@@ -108,6 +152,7 @@
     element.textContent = new Date().getFullYear();
   });
   setupMenu();
+  setupLightbox();
   applyConfig();
   loadGallery();
 })();
