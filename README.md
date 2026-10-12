@@ -9,11 +9,16 @@ rythm-with-anand-home/
 │   ├── style.css
 │   └── home.css
 ├── js/
+│   ├── gallery.js
 │   └── main.js
 ├── data/
 │   ├── site-config.json
 │   ├── gallery.json
 │   └── videos.json
+├── images/
+│   └── (gallery photographs)
+├── pages/
+│   └── gallery.html
 └── assets/
     └── images/
         ├── profile/
@@ -32,22 +37,19 @@ If moving this project into an existing repository, copy that file into the same
 
 ## Add gallery photographs
 
-Place photographs anywhere under `assets/images/`, then add entries to `data/gallery.json`:
+Place photographs in `images/`, then add entries to `data/gallery.json`:
 
 ```json
 [
   {
     "title": "Event Name",
-    "image": "assets/images/gallery/event-01.jpg",
-    "alt": "Anand Tiwary performing Tabla at Event Name",
-    "type": "Live Performance",
-    "year": "2026",
-    "description": "Short description."
+    "image": "images/event-01.jpg",
+    "alt": "Anand Tiwary performing Tabla at Event Name"
   }
 ]
 ```
 
-The Home page automatically previews up to 8 entries. The full Gallery page can later consume the same data source.
+The Home page automatically previews up to 8 entries, and `pages/gallery.html` displays all entries from the same data source. The `image` path is relative to the repository root.
 
 ## Add YouTube videos
 

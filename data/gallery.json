@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "title": "AS1",
+    "image": "images/AS1.jpeg",
+    "alt": "Anand Tiwary performing at an event"
+  },
+  {
+    "title": "JMM1",
+    "image": "images/JMM1.jpeg",
+    "alt": "Anand Tiwary performing at a Bhajan Jamming event"
+  },
+  {
+    "title": "JMM2",
+    "image": "images/JMM2.jpeg",
+    "alt": "Anand Tiwary performing at a Bhajan Jamming event"
+  }
+]
