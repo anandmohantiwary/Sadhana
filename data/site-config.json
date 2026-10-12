@@ -1,0 +1,14 @@
+{
+  "name": "Anand Tiwary",
+  "brand": "Rythm With Anand",
+  "tagline": "Bring Rhythm to Devotion",
+  "email": "rythmwithanand@gmail.com",
+  "instagram": "https://instagram.com/rythmwithanand",
+  "youtube": "https://youtube.com/@rythmwithanand",
+  "phone": {
+    "enabled": false,
+    "number": "",
+    "whatsappEnabled": false
+  },
+  "canonicalUrl": "https://USERNAME.github.io/REPOSITORY/"
+}
