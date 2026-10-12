@@ -1,0 +1,21 @@
+/* Home-specific visual tokens and components live in css/style.css.
+   Keep this file as the page-level extension point for future home-only styles. */
+
+.hero-image-frame {
+  border: 1px solid rgba(255,255,255,.1);
+}
+
+.performance-card,
+.video-card {
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.performance-card:hover,
+.video-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.video-section .video-card:hover {
+  box-shadow: 0 20px 55px rgba(0,0,0,.28);
+}
